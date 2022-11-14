@@ -1,31 +1,63 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script >
+import axios from 'axios'
+import AppMain from './components/AppMain.vue'
+
+import { store } from './store.js'
+
+export default {
+  name: 'App',
+  components: {
+
+    AppMain
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  methods: {
+    callApi(url) {
+      axios.get(url)
+        .then(response => {
+          console.log(response);
+          console.log(response.data);
+          this.store.characters = response.data
+          this.store.info = response.data.info
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
+    }
+  },
+  mounted() {
+    this.callApi(this.store.API_URL);
+  }
+}
+
+
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <main>
+
+    <h1 class="p-5">Breaking Bad Api</h1>
+
+    <div class="container ">
+      <button class="m-3 btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Category
+      </button>
+
+      <AppMain />
+    </div>
+
+  </main>
+
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+main {
+  background-color: #2e3a46;
+  color: white;
 }
 </style>
