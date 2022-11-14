@@ -15,25 +15,21 @@ export default {
 </script>
 
 <template>
-    <main>
-        <div class="container p-4">
-            <div class="result p-3">
-                <h4>Found 62 character</h4>
-            </div>
 
-
-            <CharactersList class="p-4" :characters="store.characters" />
+    <div class="container p-4">
+        <div class="result p-3">
+            <h4>Found 62 character</h4>
         </div>
 
-    </main>
+
+        <CharactersList class="p-4" :characters="store.characters" />
+    </div>
+
+
 
 </template>
 
 <style lang="scss" scoped>
-main {
-    background-color: white;
-}
-
 .result {
     background-color: black;
 }

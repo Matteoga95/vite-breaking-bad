@@ -48,16 +48,20 @@ export default {
         Select Category
       </button>
 
-      <AppMain />
+      <AppMain class="mainSection" />
     </div>
 
   </main>
 
 </template>
 
-<style scoped>
+<style  lang="scss" scoped>
 main {
   background-color: #2e3a46;
   color: white;
+}
+
+.mainSection {
+  background-color: white;
 }
 </style>
