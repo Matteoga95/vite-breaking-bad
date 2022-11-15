@@ -35,8 +35,10 @@ export default {
         this.callApi("https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul");
       } else if (event.target.value == 1) {
         this.callApi("https://www.breakingbadapi.com/api/characters?category=Breaking+Bad");
+      } else {
+        this.callApi(this.store.API_URL);
       }
-      // this.callApi(this.store.API_URL);
+
     }
   },
   mounted() {
