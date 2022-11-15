@@ -20,7 +20,7 @@ export default {
 
     <div class="container p-4">
         <div class="result p-3">
-            <h4>Found 62 character</h4>
+            <h4>Found {{ store.totalResults }} character</h4>
         </div>
 
         <div>

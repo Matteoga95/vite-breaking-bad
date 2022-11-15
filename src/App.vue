@@ -23,6 +23,7 @@ export default {
           console.log(response.data);
           this.store.characters = response.data
           this.store.info = response.data.info
+          this.store.totalResults = this.store.characters.length
         })
         .catch(err => {
           console.log(err.message);
