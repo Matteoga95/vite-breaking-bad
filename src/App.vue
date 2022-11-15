@@ -19,7 +19,7 @@ export default {
     callApi(url) {
       axios.get(url)
         .then(response => {
-          console.log(response);
+
           console.log(response.data);
           this.store.characters = response.data
           this.store.info = response.data.info
@@ -27,6 +27,15 @@ export default {
         .catch(err => {
           console.log(err.message);
         })
+    },
+    categorySelected(event) {
+      console.log(event.target.value);
+      if (event.target.value == 2) {
+        this.callApi("https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul");
+      } else if (event.target.value == 1) {
+        this.callApi("https://www.breakingbadapi.com/api/characters?category=Breaking+Bad");
+      }
+      // this.callApi(this.store.API_URL);
     }
   },
   mounted() {
@@ -44,9 +53,16 @@ export default {
     <h1 class="p-5">Breaking Bad Api</h1>
 
     <div class="container ">
-      <button class="m-3 btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+      <select class="m-3 btn btn-light " name="Seleziona categoria" id="" @change="categorySelected($event)">
+        <option value="">Select a category</option>
+        <option value="1">Breaking Bad</option>
+        <option value="2">Better Call Saul</option>
+      </select>
+
+      <!-- <button class="m-3 btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Select Category
-      </button>
+      </button> -->
 
       <AppMain class="mainSection" />
     </div>

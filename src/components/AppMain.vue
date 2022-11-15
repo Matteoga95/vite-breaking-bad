@@ -1,9 +1,11 @@
 <script >
 import CharactersList from './CharactersList.vue'
+import Loader from './loader.vue'
+
 import { store } from '../store.js'
 export default {
     name: 'AppMain',
-    components: { CharactersList },
+    components: { CharactersList, Loader },
     data() {
         return {
             store
@@ -21,7 +23,10 @@ export default {
             <h4>Found 62 character</h4>
         </div>
 
+        <div>
 
+        </div>
+        <Loader />
         <CharactersList class="p-4" :characters="store.characters" />
     </div>
 
